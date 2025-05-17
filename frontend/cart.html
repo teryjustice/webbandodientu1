@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ hàng - Anh Tuan Store</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Anh Tuan Store</h1>
+        <nav>
+            <a href="index.html">Trang chủ</a>
+            <a href="categories.html">Danh mục</a>
+            <a href="products.html">Sản phẩm</a>
+            <a href="cart.html">Giỏ hàng</a>
+            <a href="login.html">Đăng nhập</a>
+            <a href="register.html">Đăng ký</a>
+        </nav>
+    </header>
+    <main>
+        <section id="cart">
+            <h2>Giỏ hàng của bạn</h2>
+            <div id="cart-details">
+                <div id="cart-items"></div>
+                <div>
+                    <p>Tạm tính: <span id="subtotal">0đ</span></p>
+                    <p>Phí vận chuyển: <span id="shipping">0đ</span></p>
+                    <p>Tổng cộng: <span id="total">0đ</span></p>
+                    <button id="checkout">Thanh toán</button>
+                </div>
+            </div>
+            <div id="cart-empty" style="display: none;">
+                <p>Giỏ hàng trống</p>
+                <p>Hãy thêm sản phẩm vào giỏ hàng của bạn</p>
+                <a href="products.html">Tiếp tục mua sắm</a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div>
+            <h3>Về chúng tôi</h3>
+            <p>Anh Tuan Store - Nơi mua sắm đồ điện tử uy tín và chất lượng</p>
+        </div>
+        <div>
+            <h3>Liên hệ</h3>
+            <p>Email: contact@anhtuanstore.com</p>
+            <p>Phone: 0363371206</p>
+        </div>
+        <div>
+            <h3>Theo dõi chúng tôi</h3>
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+        <p>© 2025 Anh Tuan Store. Mọi quyền được bảo lưu.</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+
+</html>

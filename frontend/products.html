@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản phẩm - Anh Tuan Store</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Anh Tuan Store</h1>
+        <nav>
+            <a href="index.html">Trang chủ</a>
+            <a href="categories.html">Danh mục</a>
+            <a href="products.html">Sản phẩm</a>
+            <a href="cart.html">Giỏ hàng</a>
+            <a href="login.html">Đăng nhập</a>
+            <a href="register.html">Đăng ký</a>
+        </nav>
+    </header>
+    <main>
+        <section id="filter">
+            <h2>Bộ lọc</h2>
+            <div>
+                <label>Danh mục</label>
+                <select id="category">
+                    <option value="">Tất cả</option>
+                    <option value="Laptop">Laptop</option>
+                    <option value="Điện thoại">Điện thoại</option>
+                    <option value="Phụ kiện">Phụ kiện</option>
+                    <option value="Máy tính bảng">Máy tính bảng</option>
+                    <option value="Đồng hồ thông minh">Đồng hồ thông minh</option>
+                    <option value="Âm thanh">Âm thanh</option>
+                </select>
+            </div>
+            <div>
+                <label>Giá</label>
+                <select id="price">
+                    <option value="">Tất cả</option>
+                    <option value="under_5m">Dưới 5 triệu</option>
+                    <option value="5m_10m">5 - 10 triệu</option>
+                    <option value="10m_20m">10 - 20 triệu</option>
+                    <option value="over_20m">Trên 20 triệu</option>
+                </select>
+            </div>
+            <div>
+                <label>Sắp xếp</label>
+                <select id="sort">
+                    <option value="">Mới nhất</option>
+                    <option value="price_asc">Giá tăng dần</option>
+                    <option value="price_desc">Giá giảm dần</option>
+                    <option value="name_asc">Tên A-Z</option>
+                </select>
+            </div>
+            <button id="apply-filter">Áp dụng</button>
+        </section>
+        <section id="products">
+            <h2>Sản phẩm</h2>
+            <div id="product-list"></div>
+            <div>
+                <button id="prev-page" disabled>Trang trước</button>
+                <span id="page-number">1</span>
+                <button id="next-page">Trang sau</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div>
+            <h3>Về chúng tôi</h3>
+            <p>Anh Tuan Store - Nơi mua sắm đồ điện tử uy tín và chất lượng</p>
+        </div>
+        <div>
+            <h3>Liên hệ</h3>
+            <p>Email: contact@anhtuanstore.com</p>
+            <p>Phone: 0363371206</p>
+        </div>
+        <div>
+            <h3>Theo dõi chúng tôi</h3>
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+        <p>© 2025 Anh Tuan Store. Mọi quyền được bảo lưu.</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/products.js"></script>
+</body>
+
+</html>

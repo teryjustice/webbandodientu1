@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký - Anh Tuan Store</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Anh Tuan Store</h1>
+        <nav>
+            <a href="index.html">Trang chủ</a>
+            <a href="categories.html">Danh mục</a>
+            <a href="products.html">Sản phẩm</a>
+            <a href="cart.html">Giỏ hàng</a>
+            <a href="login.html">Đăng nhập</a>
+            <a href="register.html">Đăng ký</a>
+        </nav>
+    </header>
+    <main>
+        <section id="register">
+            <h2>Đăng ký tài khoản</h2>
+            <form id="register-form">
+                <div>
+                    <label>Tên người dùng:</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div>
+                    <label>Email:</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div>
+                    <label>Mật khẩu:</label>
+                    <input type="password" id="password" required>
+                </div>
+                <div>
+                    <label>Xác nhận mật khẩu:</label>
+                    <input type="password" id="confirm-password" required>
+                </div>
+                <button type="submit">Đăng ký</button>
+            </form>
+            <p>Đã có tài khoản? <a href="login.html">Đăng nhập</a></p>
+        </section>
+    </main>
+    <footer>
+        <div>
+            <h3>Về chúng tôi</h3>
+            <p>Anh Tuan Store - Nơi mua sắm đồ điện tử uy tín và chất lượng</p>
+        </div>
+        <div>
+            <h3>Liên hệ</h3>
+            <p>Email: contact@anhtuanstore.com</p>
+            <p>Phone: 0363371206</p>
+        </div>
+        <div>
+            <h3>Theo dõi chúng tôi</h3>
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+        <p>© 2025 Anh Tuan Store. Mọi quyền được bảo lưu.</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+
+</html>

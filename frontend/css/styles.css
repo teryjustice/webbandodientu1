@@ -1,0 +1,160 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 1rem;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 2rem;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+h2 {
+    margin-bottom: 1rem;
+}
+
+.product-card,
+.category-card {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    margin: 0.5rem;
+    display: inline-block;
+    width: 200px;
+    text-align: center;
+    vertical-align: top;
+}
+
+.product-card img,
+.category-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+#filter {
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+#filter div {
+    margin: 0.5rem 0;
+}
+
+#filter label {
+    margin-right: 0.5rem;
+}
+
+#filter select,
+#filter button {
+    padding: 0.3rem;
+}
+
+#products {
+    margin-top: 1rem;
+}
+
+#products>div:last-child {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+#cart-details,
+#cart-empty {
+    margin: 1rem 0;
+}
+
+#cart-items p {
+    margin: 0.5rem 0;
+}
+
+#cart-details div:last-child {
+    text-align: right;
+}
+
+form div {
+    margin: 1rem 0;
+}
+
+form label {
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+form input,
+form select {
+    width: 100%;
+    max-width: 300px;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+footer>div {
+    display: inline-block;
+    margin: 0 2rem;
+    vertical-align: top;
+}
+
+footer a {
+    color: white;
+    margin: 0 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+    .product-card,
+    .category-card {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    footer>div {
+        display: block;
+        margin: 1rem 0;
+    } }
