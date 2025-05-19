@@ -1,13 +1,23 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
-const Product = require('./models/Product');
-const User = require('./models/User');
-require('dotenv').config();
+import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
+import Product from './models/Product.js';
+import User from './models/User.js';
+import Category from './models/Category.js';
+import 'dotenv/config';
 
 // Kết nối MongoDB
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('MongoDB connection error:', err));
+async function connectDB() {
+  try {
+    await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
+    console.log('Connected to MongoDB');
+  } catch (err) {
+    console.error('MongoDB connection error:', err);
+    process.exit(1);
+  }
+}
 
 // Dữ liệu mẫu
 const products = [
@@ -60,11 +70,19 @@ const users = [
   }
 ];
 
+const categories = [
+  { name: 'Laptop', description: 'Các dòng laptop từ nhiều thương hiệu' },
+  { name: 'Điện thoại', description: 'Điện thoại thông minh hiện đại' },
+  { name: 'Âm thanh', description: 'Thiết bị âm thanh cao cấp' },
+  { name: 'Máy tính bảng', description: 'Máy tính bảng đa năng' }
+];
+
 async function seed() {
   try {
     // Xóa dữ liệu cũ
     await Product.deleteMany({});
     await User.deleteMany({});
+    await Category.deleteMany({});
 
     // Mã hóa mật khẩu người dùng
     const hashedUsers = await Promise.all(users.map(async user => ({
@@ -75,26 +93,20 @@ async function seed() {
     // Thêm dữ liệu
     await Product.insertMany(products);
     await User.insertMany(hashedUsers);
+    await Category.insertMany(categories);
 
     console.log('Data seeded successfully');
   } catch (err) {
     console.error('Error seeding data:', err);
   } finally {
-    mongoose.connection.close();
+    await mongoose.connection.close();
   }
 }
 
-const Category = require('./models/Category');
-const categories = [
-  { name: 'Laptop', description: 'Các dòng laptop từ nhiều thương hiệu' },
-  { name: 'Điện thoại', description: 'Điện thoại thông minh hiện đại' },
-  { name: 'Phụ kiện', description: 'Phụ kiện điện tử chất lượng' },
-  { name: 'Máy tính bảng', description: 'Máy tính bảng đa năng' },
-  { name: 'Đồng hồ thông minh', description: 'Đồng hồ thông minh thời thượng' },
-  { name: 'Âm thanh', description: 'Thiết bị âm thanh cao cấp' }
-];
-// Trong hàm seed()
-await Category.deleteMany({});
-await Category.insertMany(categories);
+// Chạy seeding
+async function run() {
+  await connectDB();
+  await seed();
+}
 
-seed();
+run().catch(console.error);
