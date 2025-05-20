@@ -1,12 +1,16 @@
-const express = require('express');
+// products.js (ES Module)
+
+import express from 'express';
+import Product from '../models/Product.js'; // Đảm bảo Product.js là ES Module
+
 const router = express.Router();
-const Product = require('../models/Product');
 
 // Lấy danh sách sản phẩm (hỗ trợ lọc và sắp xếp)
 router.get('/', async (req, res) => {
   try {
     const { category, minPrice, maxPrice, sort } = req.query;
     let query = {};
+
     if (category) query.category = category;
     if (minPrice || maxPrice) {
       query.price = {};
@@ -37,4 +41,4 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

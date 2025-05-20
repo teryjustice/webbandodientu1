@@ -1,6 +1,9 @@
-const express = require('express');
+// cart.js (ES Module)
+
+import express from 'express';
+import User from '../models/User.js'; // Đảm bảo User.js là ES Module
+
 const router = express.Router();
-const User = require('../models/User');
 
 // Thêm sản phẩm vào giỏ hàng
 router.post('/add', async (req, res) => {
@@ -15,6 +18,7 @@ router.post('/add', async (req, res) => {
     } else {
       user.cart.push({ productId, quantity });
     }
+
     await user.save();
     res.json({ message: 'Product added to cart' });
   } catch (err) {
@@ -33,4 +37,4 @@ router.get('/:userId', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

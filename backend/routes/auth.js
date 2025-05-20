@@ -1,7 +1,10 @@
-const express = require('express');
+// auth.js (ES Module)
+
+import express from 'express';
+import bcrypt from 'bcrypt';
+import User from '../models/User.js'; // Đảm bảo file User cũng là ES module
+
 const router = express.Router();
-const bcrypt = require('bcrypt'); // Sử dụng bcrypt
-const User = require('../models/User');
 
 // Đăng ký
 router.post('/register', async (req, res) => {
@@ -30,4 +33,4 @@ router.post('/login', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
