@@ -2,80 +2,116 @@
 <html lang="vi">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Danh mục - Anh Tuan Store</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
 </head>
 
 <body>
-    <header>
-        <h1>Anh Tuan Store</h1>
-        <nav>
-            <a href="index.html">Trang chủ</a>
-            <a href="categories.html">Danh mục</a>
-            <a href="products.html">Sản phẩm</a>
-            <a href="cart.html">Giỏ hàng</a>
-            <a href="login.html">Đăng nhập</a>
-            <a href="register.html">Đăng ký</a>
+    <header class="header">
+        <div class="top-bar">
+            <div class="logo">
+                <a href="index.html">
+                    <h1>Anh Tuan Store</h1>
+                </a>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Tìm kiếm sản phẩm..." id="searchInput" />
+                <button onclick="searchProducts()">Tìm kiếm</button>
+            </div>
+            <div class="user-actions">
+                <span id="userInfo"></span>
+                <a href="account.html" id="accountLink" class="nav-link">Tài khoản</a>
+                <a href="cart.html" class="nav-link">Giỏ hàng</a>
+                <a href="login.html" id="loginLink" class="nav-link">Đăng nhập</a>
+                <a href="register.html" id="registerLink" class="nav-link">Đăng ký</a>
+                <a href="#" id="logoutLink" style="display: none;" onclick="logout()" class="nav-link">Đăng xuất</a>
+                <span class="hotline">Hotline: 0363371206</span>
+            </div>
+        </div>
+        <nav class="nav">
+            <a href="index.html" class="nav-link">Trang chủ</a>
+            <a href="categories.html" class="nav-link active">Danh mục</a>
+            <a href="products.html" class="nav-link">Sản phẩm</a>
+            <a href="cart.html" class="nav-link">Giỏ hàng</a>
         </nav>
     </header>
-    <main>
-        <section id="categories">
+
+    <main class="main">
+        <section class="categories-section">
             <h2>Danh mục sản phẩm</h2>
-            <div id="category-list">
-                <div class="category-card">
-                    <h3>Laptop</h3>
-                    <p>Khám phá các dòng laptop mới nhất từ các thương hiệu nổi tiếng</p>
-                    <a href="products.html?category=Laptop">Xem sản phẩm</a>
-                </div>
-                <div class="category-card">
-                    <h3>Điện thoại</h3>
-                    <p>Điện thoại thông minh với công nghệ tiên tiến</p>
-                    <a href="products.html?category=Điện thoại">Xem sản phẩm</a>
-                </div>
-                <div class="category-card">
-                    <h3>Phụ kiện</h3>
-                    <p>Phụ kiện điện tử chất lượng cao</p>
-                    <a href="products.html?category=Phụ kiện">Xem sản phẩm</a>
-                </div>
-                <div class="category-card">
-                    <h3>Máy tính bảng</h3>
-                    <p>Máy tính bảng đa dạng kích thước và tính năng</p>
-                    <a href="products.html?category=Máy tính bảng">Xem sản phẩm</a>
-                </div>
-                <div class="category-card">
-                    <h3>Đồng hồ thông minh</h3>
-                    <p>Đồng hồ thông minh với nhiều tính năng hiện đại</p>
-                    <a href="products.html?category=Đồng hồ thông minh">Xem sản phẩm</a>
-                </div>
-                <div class="category-card">
-                    <h3>Âm thanh</h3>
-                    <p>Tai nghe, loa và các thiết bị âm thanh cao cấp</p>
-                    <a href="products.html?category=Âm thanh">Xem sản phẩm</a>
-                </div>
+            <div class="category-list" id="category-list">
+                <!-- Danh mục sẽ được render bằng JavaScript -->
             </div>
         </section>
     </main>
-    <footer>
-        <div>
-            <h3>Về chúng tôi</h3>
-            <p>Anh Tuan Store - Nơi mua sắm đồ điện tử uy tín và chất lượng</p>
+
+    <footer class="footer">
+        <div class="footer-column">
+            <h3 class="footer-title">Về chúng tôi</h3>
+            <p class="footer-text">Anh Tuan Store - Nơi mua sắm đồ điện tử uy tín và chất lượng</p>
         </div>
-        <div>
-            <h3>Liên hệ</h3>
-            <p>Email: contact@anhtuanstore.com</p>
-            <p>Phone: 0363371206</p>
+        <div class="footer-column">
+            <h3 class="footer-title">Liên hệ</h3>
+            <p class="footer-text">Email: <a href="mailto:contact@anhtuanstore.com">contact@anhtuanstore.com</a></p>
+            <p class="footer-text">Phone: 0363371206</p>
         </div>
-        <div>
-            <h3>Theo dõi chúng tôi</h3>
-            <a href="#">Facebook</a>
-            <a href="#">Instagram</a>
-            <a href="#">Twitter</a>
+        <div class="footer-column">
+            <h3 class="footer-title">Theo dõi chúng tôi</h3>
+            <div class="social-links">
+                <a href="https://www.facebook.com/Tery3377" class="social-link" target="_blank">Facebook</a>
+            </div>
         </div>
-        <p>© 2025 Anh Tuan Store. Mọi quyền được bảo lưu.</p>
+        <p class="footer-copyright">
+            © 2025 Anh Tuan Store. Mọi quyền được bảo lưu.
+        </p>
     </footer>
+
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const categories = [
+                {
+                    name: 'Laptop',
+                    image: 'https://cdn.tgdd.vn/Products/Images/44/318445/dell-xps-13-plus-9320-i7-1y0wg-1-750x500.jpg',
+                    desc: 'Khám phá các dòng laptop mới nhất từ các thương hiệu nổi tiếng'
+                },
+                {
+                    name: 'Điện thoại',
+                    image: 'https://cdn.alloallo.media/catalog/product/apple/iphone/iphone-14-pro/iphone-14-pro-silver-front.jpg',
+                    desc: 'Điện thoại thông minh với công nghệ tiên tiến'
+                },
+                {
+                    name: 'Âm thanh',
+                    image: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/MWP22?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1591634795000',
+                    desc: 'Tai nghe, loa và các thiết bị âm thanh cao cấp'
+                },
+                {
+                    name: 'Máy tính bảng',
+                    image: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTDTplhb6vUEh0-vwonxG2whr-fQ1U8UYwkvwEwBdrcd4xze2eIbjjZtMjXPQyURKOyitoMtFY4n5Vg4aCav_HrojGz6iFQpF4OJpMbg_MovevaWQWyUoXMaQ',
+                    desc: 'Máy tính bảng đa dạng kích thước và tính năng'
+                }
+            ];
+
+            const list = document.getElementById('category-list');
+            categories.forEach(cat => {
+                const card = document.createElement('div');
+                card.className = 'category-card';
+                card.innerHTML = `
+          <img src="${cat.image}" alt="${cat.name}">
+          <h3>${cat.name}</h3>
+          <p>${cat.desc}</p>
+          <a href="products.html?category=${encodeURIComponent(cat.name)}" class="category-link">Xem sản phẩm</a>
+        `;
+                list.appendChild(card);
+            });
+        });
+    </script>
 </body>
 
 </html>

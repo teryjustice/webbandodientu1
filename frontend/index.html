@@ -2,71 +2,125 @@
 <html lang="vi">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Anh Tuan Store</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
 </head>
 
 <body>
-    <header>
-        <h1>Anh Tuan Store</h1>
-        <nav>
-            <a href="index.html">Trang chủ</a>
-            <a href="categories.html">Danh mục</a>
-            <a href="products.html">Sản phẩm</a>
-            <a href="cart.html">Giỏ hàng</a>
-            <a href="login.html">Đăng nhập</a>
-            <a href="register.html">Đăng ký</a>
+    <header class="header">
+        <div class="top-bar">
+            <div class="logo">
+                <a href="index.html">
+                    <h1>Anh Tuan Store</h1>
+                </a>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Tìm kiếm sản phẩm..." id="searchInput" />
+                <button onclick="searchProducts()">Tìm kiếm</button>
+            </div>
+            <div class="user-actions">
+                <span id="userInfo"></span>
+                <a href="account.html" id="accountLink" class="nav-link">Tài khoản</a>
+                <a href="cart.html" class="nav-link">Giỏ hàng</a>
+                <a href="login.html" id="loginLink" class="nav-link">Đăng nhập</a>
+                <a href="register.html" id="registerLink" class="nav-link">Đăng ký</a>
+                <a href="#" id="logoutLink" style="display: none;" onclick="logout()" class="nav-link">Đăng xuất</a>
+                <span class="hotline">Hotline: 0363371206</span>
+            </div>
+        </div>
+        <nav class="nav">
+            <a href="products.html?category=Điện thoại" class="nav-link">Điện thoại</a>
+            <a href="products.html?category=Laptop" class="nav-link">Laptop</a>
+            <a href="products.html?category=Máy tính bảng" class="nav-link">Máy tính bảng</a>
+            <a href="products.html?category=Âm thanh" class="nav-link">Âm thanh</a>
+            <a href="products.html" class="nav-link">Tất cả sản phẩm</a>
         </nav>
     </header>
-    <main>
-        <section id="welcome">
-            <h2>Chào mừng đến với Anh Tuan Store</h2>
-            <p>Khám phá thế giới công nghệ với những sản phẩm chất lượng</p>
-        </section>
-        <section id="featured">
-            <h2>Sản phẩm nổi bật</h2>
-            <div id="featured-products"></div>
-        </section>
-        <section id="categories">
-            <h2>Danh mục sản phẩm</h2>
-            <div id="category-list">
-                <div class="category-card">
-                    <h3>Laptop</h3>
-                    <a href="products.html?category=Laptop">Xem sản phẩm</a>
+
+    <main class="main">
+        <!-- Phần cho khách chưa đăng nhập -->
+        <div id="notLoggedInContent" style="display: none;">
+            <section class="welcome-section">
+                <h2>Xin chào!</h2>
+                <p>Vui lòng <a href="login.html" class="link">đăng nhập</a> để mua sắm và sử dụng các chức năng khác.
+                </p>
+            </section>
+        </div>
+
+        <!-- Phần cho user đã đăng nhập -->
+        <div id="loggedInContent" style="display: none;">
+            <!-- Banner -->
+            <section class="banner">
+                <h2>Khuyến mãi đặc biệt!</h2>
+                <p>Giảm giá 20% cho tất cả sản phẩm trong tuần này!</p>
+            </section>
+        
+            <section class="highlight-slider">
+                <h2 class="highlight-title">Sản phẩm nổi bật</h2>
+                <div class="slider-container">
+                    <div class="slider-wrapper" id="slider-wrapper">
+                        <!-- JS sẽ render các product-slide tại đây -->
+                    </div>
+                    <button class="slider-btn prev" onclick="slideLeft()">❮</button>
+                    <button class="slider-btn next" onclick="slideRight()">❯</button>
                 </div>
-                <div class="category-card">
-                    <h3>Điện thoại</h3>
-                    <a href="products.html?category=Điện thoại">Xem sản phẩm</a>
+                <div class="see-more">
                 </div>
-                <div class="category-card">
-                    <h3>Phụ kiện</h3>
-                    <a href="products.html?category=Phụ kiện">Xem sản phẩm</a>
-                </div>
+            </section>
+                
+            <section class="flash-sale-section">
+                <div class="flash-sale-container">            
+                    <div class="flash-sale-slider" id="flash-sale-slider">
+                        <!-- JS render từng item tại đây -->
+                    </div>
+                
             </div>
-        </section>
     </main>
-    <footer>
-        <div>
-            <h3>Về chúng tôi</h3>
-            <p>Anh Tuan Store - Nơi mua sắm đồ điện tử uy tín và chất lượng</p>
+
+    <footer class="footer">
+        <div class="footer-column">
+            <h3 class="footer-title">Về chúng tôi</h3>
+            <p class="footer-text">Anh Tuan Store - Nơi mua sắm đồ điện tử uy tín và chất lượng</p>
         </div>
-        <div>
-            <h3>Liên hệ</h3>
-            <p>Email: contact@anhtuanstore.com</p>
-            <p>Phone: 0363371206</p>
+        <div class="footer-column">
+            <h3 class="footer-title">Liên hệ</h3>
+            <p class="footer-text">Email: <a href="mailto:leanhtuan03072004@gmail.com">leanhtuan03072004@gmail.com</a></p>          
         </div>
-        <div>
-            <h3>Theo dõi chúng tôi</h3>
-            <a href="#">Facebook</a>
-            <a href="#">Instagram</a>
-            <a href="#">Twitter</a>
+        <div class="footer-column">
+            <h3 class="footer-title">Theo dõi chúng tôi</h3>
+            <div class="social-links">
+                <a href="https://www.facebook.com/Tery3377" target="_blank" class="social-link">Facebook</a>
+            </div>
         </div>
-        <p>© 2025 Anh Tuan Store. Mọi quyền được bảo lưu.</p>
+        <p class="footer-copyright">
+            © 2025 Anh Tuan Store. Mọi quyền được bảo lưu.
+        </p>
     </footer>
+
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/auth.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/index.js"></script>
+    <script>
+        let scrollX = 0;
+
+        function slideLeft() {
+            const wrapper = document.getElementById('slider-wrapper');
+            scrollX = Math.max(scrollX - 260, 0);
+            wrapper.style.transform = `translateX(-${scrollX}px)`;
+        }
+
+        function slideRight() {
+            const wrapper = document.getElementById('slider-wrapper');
+            const maxScroll = wrapper.scrollWidth - wrapper.clientWidth;
+            scrollX = Math.min(scrollX + 260, maxScroll);
+            wrapper.style.transform = `translateX(-${scrollX}px)`;
+        }
+    </script>
 </body>
 
 </html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tài khoản - Anh Tuan Store</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+</head>
+
+<body>
+    <header class="header">
+        <div class="top-bar">
+            <div class="logo">
+                <a href="index.html">
+                    <h1>Anh Tuan Store</h1>
+                </a>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Tìm kiếm sản phẩm..." id="searchInput" />
+                <button onclick="searchProducts()">Tìm kiếm</button>
+            </div>
+            <div class="user-actions">
+                <span id="userInfo"></span>
+                <a href="account.html" id="accountLink" class="nav-link">Tài khoản</a>
+                <a href="cart.html" class="nav-link">Giỏ hàng</a>
+                <a href="login.html" id="loginLink" class="nav-link">Đăng nhập</a>
+                <a href="register.html" id="registerLink" class="nav-link">Đăng ký</a>
+                <a href="#" id="logoutLink" class="nav-link" style="display: none;" onclick="logout()">Đăng xuất</a>
+                <span class="hotline">Hotline: 0363371206</span>
+            </div>
+        </div>
+        <nav class="nav">
+            <a href="index.html" class="nav-link">Trang chủ</a>
+            <a href="categories.html" class="nav-link">Danh mục</a>
+            <a href="products.html" class="nav-link">Sản phẩm</a>
+            <a href="cart.html" class="nav-link">Giỏ hàng</a>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="account-section">
+            <div class="account-container">
+
+                <!-- Thông tin cá nhân -->
+                <div class="account-info">
+                    <h3>Thông tin cá nhân</h3>
+                    <form id="profile-form" class="profile-form">
+                        <div class="form-group">
+                            <label for="username" class="form-label">Họ tên:</label>
+                            <input type="text" id="username" name="username" class="form-input" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="email" id="email" name="email" class="form-input" required readonly />
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Số điện thoại:</label>
+                            <input type="tel" id="phone" name="phone" class="form-input" />
+                        </div>
+                        <div class="form-group">
+                            <label for="address" class="form-label">Địa chỉ:</label>
+                            <textarea id="address" name="address" class="form-input"></textarea>
+                        </div>
+                        <button type="submit" class="save-btn">Lưu thay đổi</button>
+                    </form>
+                </div>
+
+                <!-- Lịch sử đơn hàng -->
+                <div class="order-history">
+                    <h3>Lịch sử đơn hàng</h3>
+                    <div id="orders-list" class="orders-list">
+                        <!-- Danh sách đơn hàng sẽ được thêm ở đây bằng JS -->
+                    </div>
+                </div>
+
+                <!-- Thông báo -->
+                <div id="success-message" class="success-msg" style="display: none;"></div>
+                <div id="error-message" class="error-msg" style="display: none;"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-column">
+            <h3 class="footer-title">Về chúng tôi</h3>
+            <p class="footer-text">Anh Tuan Store - Nơi mua sắm đồ điện tử uy tín và chất lượng</p>
+        </div>
+        <div class="footer-column">
+            <h3 class="footer-title">Liên hệ</h3>
+            <p class="footer-text">Email: <a href="mailto:contact@anhtuanstore.com">contact@anhtuanstore.com</a></p>
+            <p class="footer-text">Phone: 0363371206</p>
+        </div>
+        <div class="footer-column">
+            <h3 class="footer-title">Theo dõi chúng tôi</h3>
+            <div class="social-links">
+                <a href="https://www.facebook.com/Tery3377" class="social-link" target="_blank">Facebook</a>
+            </div>
+        </div>
+        <p class="footer-copyright">
+            © 2025 Anh Tuan Store. Mọi quyền được bảo lưu.
+        </p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/account.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thêm sản phẩm mới - Admin</title>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+    <header class="header">
+        <div class="top-bar">
+            <div class="logo">
+                <a href="index.html">
+                    <h1>Anh Tuan Store</h1>
+                </a>
+            </div>
+            <div class="user-actions">
+                <a href="products.html" class="nav-link">Quay lại Sản phẩm</a>
+                <a href="#" onclick="logout()" class="nav-link">Đăng xuất</a>
+            </div>
+        </div>
+        <nav class="nav">
+            <a href="index.html" class="nav-link">Trang chủ</a>
+            <a href="categories.html" class="nav-link">Danh mục</a>
+            <a href="products.html" class="nav-link">Sản phẩm</a>
+            <a href="cart.html" class="nav-link">Giỏ hàng</a>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="register-section">
+            <div class="register-container">
+                <h2 class="register-title">Thêm sản phẩm mới</h2>
+                <form id="add-product-form" class="register-form">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Tên sản phẩm:</label>
+                        <input type="text" id="name" name="name" class="form-input" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description" class="form-label">Mô tả:</label>
+                        <textarea id="description" name="description" class="form-input" rows="3" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price" class="form-label">Giá:</label>
+                        <input type="number" id="price" name="price" class="form-input" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="image" class="form-label">URL Ảnh:</label>
+                        <input type="url" id="image" name="image" class="form-input" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category" class="form-label">Danh mục:</label>
+                        <select id="category" name="category" class="form-input" required>
+                            <option value="">-- Chọn danh mục --</option>
+                            <option value="Laptop">Laptop</option>
+                            <option value="Điện thoại">Điện thoại</option>
+                            <option value="Máy tính bảng">Máy tính bảng</option>
+                            <option value="Âm thanh">Âm thanh</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="register-btn">Thêm sản phẩm</button>
+                </form>
+
+                <div id="success-message" class="success-msg" style="display: none;">Thêm sản phẩm thành công!</div>
+                <div id="error-message" class="error-msg" style="display: none;"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // Chỉ admin mới được vào
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (!user || user.role !== "admin") {
+            alert("Bạn không có quyền truy cập");
+            window.location.href = "index.html";
+        }
+
+        const form = document.getElementById("add-product-form");
+        form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const name = document.getElementById("name").value;
+            const description = document.getElementById("description").value;
+            const price = parseFloat(document.getElementById("price").value);
+            const image = document.getElementById("image").value;
+            const category = document.getElementById("category").value;
+
+            try {
+                const res = await axios.post("http://localhost:5000/api/products", {
+                    name,
+                    description,
+                    price,
+                    image,
+                    category,
+                }, {
+                    headers: {
+                        Authorization: `Bearer ${user.token}`,
+                    },
+                });
+
+                if (res.data) {
+                    document.getElementById("success-message").style.display = "block";
+                    document.getElementById("error-message").style.display = "none";
+                    form.reset();
+                    setTimeout(() => {
+                        window.location.href = "products.html";
+                    }, 1500);
+                }
+            } catch (err) {
+                const errMsg = err.response?.data?.message || "Lỗi khi thêm sản phẩm!";
+                document.getElementById("error-message").textContent = errMsg;
+                document.getElementById("error-message").style.display = "block";
+                document.getElementById("success-message").style.display = "none";
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem("user");
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+
+</html>
